@@ -107,9 +107,7 @@ function generatePoemImage(poemText){
 
 function newImage(outputs, poemText) {
     if (outputs && outputs.result) {
-        let formHTML = '<form class="form-inline" id="differentStyleSelector'+id+'" style="visibility: hidden;"><div class="form-group"><select class="form-control" id="model-type'+id+'"><option value="udnie">Udnie</option><option value="wave">Wave</option><option value="duaiv">Italy Dream Lake</option><option value="la_muse">La Muse</option><option value="rain_princess">Rain Princess</option><option value="mathura">Mathura</option><option value="scream">Scream</option><option value="wreck">Wreck</option></select></div></form></div>'
-        poemImgBlock.innerHTML+="<div><div class='polaroid' polaroid-caption='"+poemText+"'><img src='"+outputs.result+"' id='inputImg"+id+"'></div>";
-        poemImgBlock.innerHTML+= formHTML;
+        poemImgBlock.innerHTML+="<div><div class='polaroid' polaroid-caption='"+poemText+"'><img src='"+outputs.result+"' id='inputImg"+id+"'></div><form class='form-inline' id='differentStyleSelector"+id+"' style='visibility: hidden;'><div class='form-group'><select class='form-control' id='model-type"+id+"'><option value='udnie'>Udnie</option><option value='wave'>Wave</option><option value='duaiv'>Italy Dream Lake</option><option value='la_muse'>La Muse</option><option value='rain_princess'>Rain Princess</option><option value='mathura'>Mathura</option><option value='scream'>Scream</option><option value='wreck'>Wreck</option></select></div></form></div>";
         id ++;
     }
 }
