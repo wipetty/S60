@@ -50,6 +50,7 @@ document.getElementById("selection-type").addEventListener("input", function (ev
 
 // start style transfer
 document.getElementById("button").addEventListener("click", function (event) {
+    
     styleSelection = document.getElementById('selection-type').value.slice(0,4);
 
     //statusMsg.innerHTML = 'Loading Models...';
@@ -62,7 +63,9 @@ document.getElementById("button").addEventListener("click", function (event) {
         sameStyle();
 
         }
-    else if (styleSelection == 'different'){
+    else if (styleSelection == 'diff'){
+
+        console.log('different!');
 
         //statusMsg.innerHTML = 'Loading Models...';
 
@@ -97,7 +100,6 @@ function generatePoemImage(poemText){
             .then(response => response.json())
             .then(outputs => {
             const { result } = outputs;
-            console.log(outputs.result);
             newImage(outputs, poemText)
             })
     }
@@ -116,7 +118,9 @@ function differentStyle(){
 
     for (let i=1; i<id; i++){
         let inputImg = document.getElementById('inputImg'+i.toString());
+        console.log(i);
         differentStyleSelection = document.getElementById('model-type'+i.toString()).value;
+        console.log(differentStyleSelection);
 
         ml5.styleTransfer('models/'+ differentStyleSelection)
         .then(style1 => style1.transfer(inputImg))
