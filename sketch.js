@@ -1,4 +1,4 @@
-debug_mode = true;
+debug_mode = false;
 
 // receive poem input
 document.getElementById("poem-text").addEventListener("input", function (event) {
@@ -65,8 +65,6 @@ document.getElementById("button").addEventListener("click", function (event) {
         }
     else if (styleSelection == 'diff'){
 
-        console.log('different!');
-
         //statusMsg.innerHTML = 'Loading Models...';
 
         differentStyle();
@@ -115,9 +113,7 @@ function differentStyle(){
 
     for (let i=1; i<id; i++){
         let inputImg = document.getElementById('inputImg'+i.toString());
-        console.log(i);
         differentStyleSelection = document.getElementById('model-type'+i.toString()).value;
-        console.log(differentStyleSelection);
 
         ml5.styleTransfer('models/'+ differentStyleSelection)
         .then(style1 => style1.transfer(inputImg))
