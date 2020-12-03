@@ -1,29 +1,28 @@
 header {
     padding: 50px 0 50px;
-    fill:#ffffff;
-
+    fill: #ffffff;
 }
 
-h1{
+h1 {
     padding-bottom: 20px;
-    font-size:72px;
+    font-size: 72px;
 }
 
-h2{
+h2 {
     padding-bottom: 20px;
 }
 
-h4{
+h4 {
     font-weight: 400;
     font-size: 18px;
 }
 
-h5{
+h5 {
     font-size: 18px;
     font-width: 100;
-
 }
-.container{
+
+.container {
     padding: 50px;
 }
 
@@ -32,18 +31,18 @@ h5{
     width: 40%;
 }
 
-.status{
+.status {
     font-weight: 400;
     font-size: 24px;
-    fill:lightgray;
+    fill: lightgray;
 }
 
 .overlay {
-    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    z-index: 2;
+    /* Specify a stack order in case you're using a different order for other elements */
 }
 
-.polaroid
-{
+.polaroid {
     position: relative;
     width: 290px;
     border: 1px solid rgb(215, 214, 214);
@@ -54,8 +53,7 @@ h5{
     margin-top: 40px;
 }
 
-.polaroid:after
-{
+.polaroid:after {
     content: attr(polaroid-caption);
     position: absolute;
     bottom: 0px;
@@ -77,4 +75,10 @@ h5{
 
 .form-polaroid {
     margin-bottom: 100px;
+}
+
+
+.info-btn {
+    position: absolute;
+    bottom: 10px;
 }
