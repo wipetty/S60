@@ -41,3 +41,40 @@ h5{
 .overlay {
     z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
 }
+
+.polaroid
+{
+    position: relative;
+    width: 290px;
+    border: 1px solid rgb(215, 214, 214);
+    background-color: white;
+    padding: 15px 15px 80px 15px;
+    box-shadow: 5px 10px 10px rgb(189, 189, 189);
+    margin-bottom: 30px;
+    margin-top: 40px;
+}
+
+.polaroid:after
+{
+    content: attr(polaroid-caption);
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: calc(100% - 20px);
+    padding: 10px;
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Indie Flower', cursive;
+}
+
+#poem-images {
+    display: flexbox;
+}
+
+.polaroidContainer {
+    height: 400px;
+}
+
+.form-polaroid {
+    margin-bottom: 100px;
+}

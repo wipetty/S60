@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>S60 Final Project</title>
-    <script src="http://localhost:8080/ml5.js" type="text/javascript"></script>
-
+    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
+    <script src="https://unpkg.com/ml5@0.6.0/dist/ml5.min.js" type="text/javascript"></script>
     <link rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
           crossorigin="anonymous">
-      <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 
@@ -21,10 +21,9 @@
         <br>
         <h1>Visual Poetry</h1>
         <div class="justify-content-center" style="width:80%; margin:auto;padding:10px;">
-            <h4>Ever wondered what imagery and emotion can a poetry evoke?</h4>
-            <h4>Using AttentionGAN and StyleTransfer, Visual Poetry can generate a visual representation
-                based on the poetry of your input and you can choose an art style that could evoke certain emotions
-                from the audience.
+            <h3>Ever wondered what imagery and emotion poetry can evoke?</h3>
+            <h4>Using AttentionGAN and StyleTransfer, Visual Poetry generates a visual representation
+                based on your poetry and art style to evoke your choice of emotion.
             </h4>
         </div>
 
@@ -36,8 +35,8 @@
 <div class="container">
     <h2 class="text-center">Style Guide and Emotion</h2>
     <p  style="width:80%; margin:auto;padding:10px;">According to WikiArt Emotions Dataset's emotion classifications,
-        different art styles can evoke 20 types of emotions for the observers.
-        Please use this style guide for the style generation.</p>
+        different art styles can evoke 20 types of emotion.
+        Here is a style guide for evoking different emotions.</p>
     <br>
 
     <div class="card-deck">
@@ -128,77 +127,128 @@
 </div>
 
 <div class="container">
-    <h2  class="text-center">Style Application</h2>
-    <p   style="width:80%; margin:auto;padding:10px;">Use "Type Selection" to determine if you want to apply the same style or different style
-    to your images. Then use "Style Selection" to choose the style. Lastly, click "Compute Image!"
-    to generate the image.</p>
+    <h2  class="text-center">What do you want to express?</h2>
+    <!-- <p   style="width:80%; margin:auto;padding:10px;">Use "Type Selection" to determine if you want to apply the same style or different style
+    to your images. Then use "Style Selection" to choose the style. Lastly, click "Stylize Images!"
+    to generate the image.</p> -->
+
     <br>
-    <!-- Select box to choose the ranking type -->
 
     <div class="center">
-        <form class="form-inline">
+        <form class="form">
             <div class="form-group">
-                <label for="selection-type">Type Selection:</label>
+                <label for="poem-text">Your poem</label>
+                <textarea class="form-control" id="poem-text" rows="3"></textarea>
+                <small id="poem-help" class="form-text text-muted">Press 'enter' for each new image</small>
+            </div>
+            <div class="form-group">
+                <label for="selection-type">What style do you want for your images?</label>
                 <select class="form-control" id="selection-type">
-                    <option value="same">Same Style</option>
-                    <option value="different">Different Style</option>
+                    <option value="same_udnie">Same Style: Udnie</option>
+                    <option value="same_wave">Same Style: Wave</option>
+                    <option value="same_fuchun">Same Style: Fuchun</option>
+                    <option value="same_la_muse">Same Style: La Muse</option>
+                    <option value="same_rain_princess">Same Style: Rain Princess</option>
+                    <option value="same_mathura">Same Style: Mathura</option>
+                    <option value="same_scream">Same Style: Scream</option>
+                    <option value="same_wreck">Same Style: Wreck</option>
+                    <option value="different">Different Styles</option>
                 </select>
+            
+                <div id="note" style="visibility: hidden">
+                    <small class="form-text text-muted">Select the style for each image below</small>
+                </div>
             </div>
         </form>
-        <form class="form-inline" id="sameStyleSelector">
-            <div class="form-group">
-                <label for="model-type">Style Selection:</label>
-                <select class="form-control" id="model-type">
-                    <option value="udnie">Udnie</option>
-                    <option value="wave">Wave</option>
-                    <option value="fuchun">Fuchun</option>
-                    <option value="la_muse">La Muse</option>
-                    <option value="rain_princess">Rain Princess</option>
-                    <option value="mathura">Mathura</option>
-                    <option value="scream">Scream</option>
-                    <option value="wreck">Wreck</option>
-                </select>
+    </div>
+
+    <button id="button" type="button" class="btn btn-primary btn-lg btn-block">Stylize Images!</button>
+    <br><br>
+
+    <div class="status text-center"><p id="statusMsg"></p></div>
+    <br><br>
+
+    <div id="poem-images">
+        <!-- <div class='polaroid'><img src='img/0.jpg'></div>
+        <form class="form-inline form-polaroid" id="differentStyleSelector1"><div class="form-group"><div class="form-group"><select class="form-control" id="model-type1"><option value="udnie">Udnie</option><option value="wave">Wave</option><option value="fuchun">Fuchun</option><option value="la_muse">La Muse</option><option value="rain_princess">Rain Princess</option><option value="mathura">Mathura</option><option value="scream">Scream</option><option value="wreck">Wreck</option></select></div></form> -->
+
+        <!-- <div class="container polaroidContainer">
+
+            <div class="row">
+
+                <div class="col-sm">
+                    <div class='polaroid'><img src="img/1.jpg"></div>
+                </div>
+
+                <div class="col-sm">
+                    <div class='polaroid'><img src="img/0.jpg"></div>
+                </div>
+
+                <div class="col-sm">
+                    <div class='polaroid'><img src="img/0.jpg"></div>
+                </div>
+
             </div>
-        </form>
-        <div id="note" style="visibility: hidden">
-            <p>Please select the style for each image then click the button.</p>
-        </div>
+
+            <div class="row">
+
+                <div class="col-sm">
+                    <form class="form-inline" id="differentStyleSelector1" style="visibility: hidden;">
+                        <div class="form-group">
+                            <select class="form-control" id="model-type1">
+                                <option value="udnie">Udnie</option>
+                                <option value="wave">Wave</option>
+                                <option value="fuchun">Fuchun</option>
+                                <option value="la_muse">La Muse</option>
+                                <option value="rain_princess">Rain Princess</option>
+                                <option value="mathura">Mathura</option>
+                                <option value="scream">Scream</option>
+                                <option value="wreck">Wreck</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-sm">
+                    <form class="form-inline" id="differentStyleSelector1" style="visibility: hidden;">
+                        <div class="form-group">
+                            <select class="form-control" id="model-type1">
+                                <option value="udnie">Udnie</option>
+                                <option value="wave">Wave</option>
+                                <option value="fuchun">Fuchun</option>
+                                <option value="la_muse">La Muse</option>
+                                <option value="rain_princess">Rain Princess</option>
+                                <option value="mathura">Mathura</option>
+                                <option value="scream">Scream</option>
+                                <option value="wreck">Wreck</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-sm">
+                    <form class="form-inline" id="differentStyleSelector1" style="visibility: hidden;">
+                        <div class="form-group">
+                            <select class="form-control" id="model-type1">
+                                <option value="udnie">Udnie</option>
+                                <option value="wave">Wave</option>
+                                <option value="fuchun">Fuchun</option>
+                                <option value="la_muse">La Muse</option>
+                                <option value="rain_princess">Rain Princess</option>
+                                <option value="mathura">Mathura</option>
+                                <option value="scream">Scream</option>
+                                <option value="wreck">Wreck</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            
+            </div>
+        </div> -->
     </div>
 
 
-    <button id="button" type="button" class="btn btn-primary btn-lg btn-block">Compute Images!</button>
-    <br><br>
-
-    <div class="status text-center"><p id="statusMsg">Status: Idle</p></div>
-    <br><br>
-
-
-<!--        <div class="row">-->
-<!--            <div class="col-sm">-->
-<!--                <div class="row">-->
-<!--                    <div class="col-sm">-->
-<!--                        One of three columns-->
-<!--                    </div>-->
-<!--                    <div class="col-sm">-->
-<!--                        One of three columns-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="col-sm">-->
-<!--                <div class="row">-->
-<!--                    <div class="col-sm">-->
-<!--                        One of three columns-->
-<!--                    </div>-->
-<!--                    <div class="col-sm">-->
-<!--                        One of three columns-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-
-
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-sm">
             <h2>Image 1</h2>
             <h5 id="poemLine1">Snorkelling, Scuba diving with the fish in the sea</h5>
@@ -391,7 +441,7 @@
             </form>
         </div>
         <img class="col-sm" src="img/7.jpg" alt="input img" id="inputImg8"/>
-        <div class="col-sm" id="Style8"></div>
+        <div class="col-sm" id="Style8"></div> -->
 
     </div>
 
