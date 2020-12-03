@@ -89,3 +89,7 @@ h5 {
     position: absolute;
     bottom: 10px;
 }
+
+.form-inline {
+    justify-content: center;
+}
