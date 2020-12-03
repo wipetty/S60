@@ -45,12 +45,17 @@ h5 {
 .polaroid {
     position: relative;
     width: 290px;
-    border: 1px solid rgb(215, 214, 214);
+    border: 1px solid #ccc;
     background-color: white;
     padding: 15px 15px 80px 15px;
+    transition: box-shadow .3s;
     box-shadow: 5px 10px 10px rgb(189, 189, 189);
     margin-bottom: 30px;
     margin-top: 40px;
+}
+
+.polaroid:hover {
+  box-shadow: 15px 20px 20px rgba(33,33,33,.2); 
 }
 
 .polaroid:after {
