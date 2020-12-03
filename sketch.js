@@ -201,7 +201,7 @@ let id = 1;
 
 function newImage(outputs, poemText) {
     if (outputs && outputs.result) {
-        let formHTML = '<form class="form-inline" id="differentStyleSelector'+id+'" style="visibility: hidden;"><div class="form-group"><select class="form-control" id="model-type1"><option value="udnie">Udnie</option><option value="wave">Wave</option><option value="fuchun">Fuchun</option><option value="la_muse">La Muse</option><option value="rain_princess">Rain Princess</option><option value="mathura">Mathura</option><option value="scream">Scream</option><option value="wreck">Wreck</option></select></div></form>'
+        let formHTML = '<form class="form-inline" id="differentStyleSelector' + id +'" style="visibility: hidden;"><div class="form-group"><select class="form-control" id="model-type1"><option value="udnie">Udnie</option><option value="wave">Wave</option><option value="fuchun">Fuchun</option><option value="la_muse">La Muse</option><option value="rain_princess">Rain Princess</option><option value="mathura">Mathura</option><option value="scream">Scream</option><option value="wreck">Wreck</option><option value="duaiv">Italy Dream Lake</option></select></div></form>'
         poemImgBlock.innerHTML+="<div class='polaroid' polaroid-caption='"+poemText+"'><img src='"+outputs.result+"' id='inputImg"+id+"'></div>";
         poemImgBlock.innerHTML+= formHTML;
         id ++;
